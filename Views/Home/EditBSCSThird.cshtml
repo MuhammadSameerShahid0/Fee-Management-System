@@ -1,0 +1,72 @@
+﻿@model FeeManagement.Models.BSCS_Third
+
+@{
+    ViewBag.Title = "EditBSCSThird";
+    Layout = "~/Views/Shared/AdLayout.cshtml";
+}
+<head>
+
+    <title>Admin - Edit BSCS Third list</title>
+
+</head>
+<h3 class="text-center" style="font-weight:bolder">Admin Operation <span style="color:brown">( Edit - BSCS Third list )</span></h3>
+
+@using (Html.BeginForm("EditBSCSThird", "Home"))
+{
+
+
+    <div class="container m-3 pb-3">
+        <div class="row shadow pt-4 bg-white p-4 rounded">
+            <div class="col-sm pt-2">
+
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-id-badge fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            @Html.EditorFor(model => model.BSCS_Third_ID, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Course ID.", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.BSCS_Third_ID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-book fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            @Html.EditorFor(model => model.Third_cn, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Course Name", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Third_cn, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <span id="status"></span>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-clock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            @Html.EditorFor(model => model.Third_credit_hours, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Course Credit Hours", required = "required", id = "emailid" } })
+                            @Html.ValidationMessageFor(model => model.Third_credit_hours, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-file-invoice-dollar fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            @Html.EditorFor(model => model.Third_fees, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Course Fee's", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Third_fees, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Update" class="btn btn-primary rounded-pill" />
+        <a href="~/Home/BscsThird">
+            <input type="button" value="Back" class="btn btn-danger rounded-pill" />
+        </a>
+    </div>
+}

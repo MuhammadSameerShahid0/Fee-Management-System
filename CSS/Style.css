@@ -1,0 +1,269 @@
+﻿/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+@font-face {
+    font-family: "Righteous";
+    src: url("../fonts/Poppins-Black.ttf");
+    src: url("../fonts/Roboto.ttf");
+}
+
+
+/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
+ 2) font-family: 'Poppins', sans-serif;
+ ----------------------------------------*****/
+
+
+/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
+
+@import url(animate.min.css);
+@import url(normalize.css);
+@import url(icomoon.css);
+@import url(css/font-awesome.min.css);
+@import url(meanmenu.css);
+@import url(owl.carousel.min.css);
+@import url(swiper.min.css);
+@import url(slick.css);
+@import url(jquery.fancybox.min.css);
+@import url(jquery-ui.css);
+@import url(nice-select.css);
+
+/*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
+
+* {
+    box-sizing: border-box !important;
+    transition: ease all 0.5s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #666666;
+    font-size: 14px;
+    font-family: Poppins;
+    line-height: 1.80857;
+    font-weight: normal;
+    overflow-x: hidden;
+}
+
+a {
+    color: #1f1f1f;
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: 0;
+    font-weight: normal;
+    position: relative;
+    padding: 0 0 10px 0;
+    font-weight: normal;
+    line-height: normal;
+    color: #111111;
+    margin: 0
+}
+
+h1 {
+    font-size: 24px
+}
+
+h2 {
+    font-size: 22px
+}
+
+h3 {
+    font-size: 18px
+}
+
+h4 {
+    font-size: 16px
+}
+
+h5 {
+    font-size: 14px
+}
+
+h6 {
+    font-size: 13px
+}
+
+*,
+*::after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: #212121;
+    text-decoration: none !important;
+    opacity: 1
+}
+
+button:focus {
+    outline: none;
+}
+
+ul,
+li,
+ol {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+p {
+    margin: 10px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+a {
+    color: #222222;
+    text-decoration: none;
+    outline: none !important;
+}
+
+a,
+.btn {
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+:focus {
+    outline: 0;
+}
+
+.layout_padding {
+    padding-top: 90px;
+    padding-bottom: 0px;
+}
+
+.padding_0 {
+    padding: 0px;
+}
+
+.header_bg {
+    width: 100%;
+    float: left;
+    background: #2d4fbc !important;
+    padding-bottom: 20px !important;
+}
+
+.header_section {
+    width: 100%;
+    float: left;
+    background-image: url(../images/banner-bg.png);
+    height: auto;
+    background-size: cover;
+    padding-bottom: 90px;
+}
+
+.bg-dark {
+    background-color: transparent !important;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url(../images/toggle-icon.png);
+}
+
+.navbar-toggler-icon {
+    width: 55px;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: transparent !important;
+}
+
+.navbar-toggler {
+    padding: .25rem 0px;
+}
+
+.navbar {
+    padding: 30px 0px 10px 0px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #000;
+    font-size: 18px;
+    padding-bottom: 0px;
+}
+
+    .navbar-dark .navbar-nav .nav-link:focus,
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #000;
+    }
+
+.banner_taital {
+    width: 100%;
+    float: left;
+    font-size: 98px;
+    color: #060303;
+    font-weight: bold;
+    line-height: 100px;
+    padding-top: 60px;
+}
+
+.banner_text {
+    width: 90%;
+    float: left;
+    font-size: 16px;
+    color: #383838;
+    margin-left: 0px;
+}
+
+.read_bt {
+    width: 170px;
+    float: left;
+    margin-top: 10px;
+}
+
+    .read_bt a {
+        width: 100%;
+        float: left;
+        font-size: 16px;
+        color: #ffffff;
+        text-align: center;
+        background-color: #070414;
+        border-bottom: 7px solid #393bb9;
+        border-radius: 30px;
+        padding: 9px 0px;
+    }
+
+        .read_bt a:hover {
+            background-color: #8480f9;
+            border-bottom: 7px solid #393bb9;
+        }

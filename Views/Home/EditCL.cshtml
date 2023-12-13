@@ -1,0 +1,88 @@
+﻿@model FeeManagement.Models.Semester_Wise_Courses
+
+@{
+    ViewBag.Title = "EditCL";
+    Layout = "~/Views/Shared/AdLayout.cshtml";
+}
+
+<head>
+
+    <title>Admin - Edit Course</title>
+
+</head>
+<h3 class="text-center" style="font-weight:bolder">Admin Operation <span style="color:brown">( Edit - Update Course )</span></h3>
+
+@using (Html.BeginForm())
+{
+
+    <div class="container m-3 pb-3">
+        <div class="row shadow pt-4 bg-white p-4 rounded">
+            <div class="col-sm pt-2">
+
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-arrow-alt-circle-down fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            @Html.DropDownListFor(model => model.DepartmentId, ViewBag.SemesterList as SelectList, "-- Select Department --", new { id = "Semesterid", htmlAttributes = new { @class = "form-control", required = "required" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <span id="status"></span>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-book-reader fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            <b>Course Name</b>    @Html.EditorFor(model => model.course_name, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Enter The Course Name", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.course_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <b><i><h4 style="font-size:25px">Rs</h4></i></b>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            <b>Course Fees</b>   @Html.EditorFor(model => model.fees, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Enter The Course Fees", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.fees, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm pt-2">
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-list fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            <b>Semester</b>    @Html.EditorFor(model => model.Semester, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Student Password" } })
+                            @Html.ValidationMessageFor(model => model.Semester, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-calendar-alt fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0 col-md-9">
+                            <b>Credit Hours</b>      @Html.EditorFor(model => model.credit_hours, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Enter The Credit Hour's" } })
+                            @Html.ValidationMessageFor(model => model.credit_hours, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update Course" class="btn btn-primary rounded-pill" />
+                <a href="~/Home/CourseList">
+                    <input type="button" value="Back" class="btn btn-danger rounded-pill" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+}

@@ -1,0 +1,148 @@
+﻿@model IEnumerable<FeeManagement.Models.BSCS_First>
+
+@{
+    ViewBag.Title = "BscsFirst";
+    Layout = "~/Views/Shared/AdLayout.cshtml";
+}
+
+<head>
+
+    <title>Admin - BSCS First List</title>
+    <link href="~/CSS/Search_Box.css" rel="stylesheet" />
+</head>
+<h3 class="text-center" style="font-weight:bolder">Admin Operation <span style="color:brown">( BSCS First Semester - List )</span></h3>
+<center>
+    <div class="input-icons">
+        <i class="fa fa-search icon fa-lg me-8 fa-fw">
+        </i>
+        <input class="input-field" type="text" id="myInput" onkeyup="searchbox()" placeholder="Find Course By Name. . ." title="Type in a email">
+    </div>
+</center>
+<script>
+    function confirmdlte() {
+        return confirm("Are You Sure ? You want To delete");
+    }
+
+    function searchbox() {
+        var input, filter, table, tr, td, i, txtValue, norows;
+
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        norows = document.getElementById('no-rows-alert');
+
+        var matchedRow = false;
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; // counting 2,1,8.. represnt kr rha kis cheez sy serch box access krna
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) //touppercase case sensitive ni krna to use kia.
+                {
+                    matchedRow = true;
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        // no record found
+        norows.style.display = matchedRow ? 'none' : 'inherit';
+        if (!matchedRow) {
+            setTimeout(function () {
+                norows.style.display = 'none'
+            }, 3000)
+        }
+    }
+</script>
+<center>
+    <button type="button" class="btn btn-secondary ">
+        <a style="color:white" href="/Home/BscsFirst">BSCS 1st</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsSecond">BSCS 2nd</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsThird">BSCS 3rd</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsSecond">BSCS 4th</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsSecond">BSCS 5th</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsSecond">BSCS 6th</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsSecond">BSCS 7th</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-primary ">
+        <a style="color:white" href="/Home/BscsSecond">BSCS 8th</a>
+    </button> &nbsp;
+    <button type="button" class="btn btn-success ">
+        <a style="color:white" href="/Home/AddBscsFirst">Add Course - 1st</a>
+    </button>
+</center>
+<br />
+
+<div class="row">
+
+    <!-- Recent Payouts Card Example -->
+    <div class="col-xl-auto col-md-auto mb-lg-auto">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-lg-auto">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="myTable">
+                                <div class="alert alert-danger text-center" id="no-rows-alert" style="display: none">No records found</div>
+
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">BSCS Semester</th>
+                                        <th scope="col">Course Name</th>
+                                        <th scope="col">Course Credit Hour's</th>
+                                        <th scope="col">Course Fee's</th>
+                                        <th scope="col">Action's</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.BSCS_First_ID)</td>
+                                            <td>BSCS First Semester</td>
+                                            <td>@Html.DisplayFor(modelItem => item.first_cn)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.first_credit_hours)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.first_fees)</td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "EditBSCSFirst", "Home", new { ids = item.BSCS_First_ID }, htmlAttributes: new { @class = "btn btn-primary" })
+                                                @Html.ActionLink("Delete", "DeleteBSCSFirst", "Home", new { delteide = item.BSCS_First_ID }, htmlAttributes: new { @class = "btn btn-danger", onclick = "return confirmdlte()" })
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                            <div class="container-fluid"style="text-align : right">
+                                <table class="table table-bordered">
+                                    <th>Total Fees</th>
+                                    <th style="text-align : center">@Model.Sum(i => i.first_fees)</th>
+                                </table>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

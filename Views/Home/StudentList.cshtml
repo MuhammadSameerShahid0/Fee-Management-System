@@ -1,0 +1,126 @@
+﻿@model IEnumerable<FeeManagement.Models.Student>
+
+@{
+    ViewBag.Title = "StudentList";
+    Layout = "~/Views/Shared/AdLayout.cshtml";
+}
+
+<head>
+
+    <title>Admin - Student List</title>
+    <link href="~/CSS/Search_Box.css" rel="stylesheet" />
+</head>
+<h3 class="text-center" style="font-weight:bolder">Admin Operation <span style="color:brown">( Student - List )</span></h3>
+<center>
+    <div class="input-icons">
+        <i class="fa fa-search icon fa-lg me-8 fa-fw">
+        </i>
+        <input class="input-field" type="text" id="myInput" onkeyup="searchbox()" placeholder="Find student by Roll Number . . ." >
+
+       &nbsp; <button class = "btn btn-danger" onclick="tableToExcel()">Download List</button>
+    </div>
+</center>
+
+<script src="~/Scripts/table2excel.js"></script>
+
+<script>
+    function tableToExcel()
+    {
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("table#myTable"));
+    }
+</script>
+
+<script>
+    function confirmdlte()
+        {
+          return confirm("Are You Sure ? You want To delete");
+        }
+
+    function searchbox()
+    {
+        var input, filter, table, tr, td, i, txtValue, norows;
+
+        input  = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table  = document.getElementById("myTable");
+        tr     = table.getElementsByTagName("tr");
+        norows = document.getElementById('no-rows-alert');
+
+        var matchedRow = false;
+
+        for (i = 0; i < tr.length; i++)
+        {
+            td = tr[i].getElementsByTagName("td")[1,0]; // counting 2,1,8.. represnt kr rha kis cheez sy serch box access krna
+            if (td)
+            {
+                txtValue = td.textContent || td.innerText;
+
+                if (txtValue.indexOf(filter) > -1) //touppercase case sensitive ni krna to use kia.
+                {
+                    matchedRow = true;
+                    tr[i].style.display = "";
+             } else
+                {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        // no record found
+        norows.style.display = matchedRow ? 'none' : 'inherit';
+        if (!matchedRow)
+        {
+            setTimeout(function ()
+            {
+                norows.style.display = 'none'
+            }, 3000)
+        }
+    }
+</script>
+   
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="myTable">
+                                <div class="alert alert-danger text-center" id="no-rows-alert" style="display: none">No record found Against This Roll #</div>
+
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Roll No.</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Father Name</th>
+                                        <th scope="col">Passward</th>
+                                        <th scope="col">Age</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Semester</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Campus</th>
+                                        <th scope="col">Action's</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td>@item.StdRollNo</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.StdName</td>
+                                            <td>@item.StdFName</td>
+                                            <td>@item.StdPassword</td>
+                                            <td>@item.StdAge</td>
+                                            <td>@item.StdAddress</td>
+                                            <td>@item.Gender</td>
+                                            <td>@item.Semester</td>
+                                            <td>@item.Department</td>
+                                            <td>@item.Campus</td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", "Home", new { id = item.StdId }, htmlAttributes: new { @class = "btn btn-primary" })
+                                                <br /> --- <br />@Html.ActionLink("Delete", "Delete", "Home", new { delteid = item.StdId }, htmlAttributes: new { @class = "btn btn-danger", onclick = "return confirmdlte()" })
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+    

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<FeeManagement.Models.Request_Std>
+
+@{
+    ViewBag.Title = "AdRequest";
+    Layout = "~/Views/Shared/AdLayout.cshtml";
+}
+
+<head>
+
+    <title>Admin - Student List</title>
+    <link href="~/CSS/Search_Box.css" rel="stylesheet" />
+</head>
+<h3 class="text-center" style="font-weight:bolder">Admin Operation <span style="color:brown">( Request - List )</span></h3>
+<center>
+    <div class="input-icons">
+        <i class="fa fa-search icon fa-lg me-8 fa-fw">
+        </i>
+        <input class="input-field" type="text" id="myInput" onkeyup="searchbox()" placeholder="Find Request by Email or Department. . ." title="Type in a email">
+    </div>
+</center>
+<script>
+    function confirmdlte()
+        {
+          return confirm("Are You Sure ? You want To delete");
+        }
+
+    function searchbox()
+    {
+        var input, filter, table, tr, td, i, txtValue, norows;
+
+        input  = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table  = document.getElementById("myTable");
+        tr     = table.getElementsByTagName("tr");
+        norows = document.getElementById('no-rows-alert');
+
+        var matchedRow = false;
+
+        for (i = 0; i < tr.length; i++)
+        {
+            td = tr[i].getElementsByTagName("td")[1,0]; // counting 2,1,8.. represnt kr rha kis cheez sy serch box access krna
+            if (td)
+            {
+                txtValue = td.textContent || td.innerText;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) //touppercase case sensitive ni krna to use kia.
+                {
+                    matchedRow = true;
+                    tr[i].style.display = "";
+             } else
+                {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        // no record found
+        norows.style.display = matchedRow ? 'none' : 'inherit';
+        if (!matchedRow)
+        {
+            setTimeout(function ()
+            {
+                norows.style.display = 'none'
+            }, 3000)
+        }
+    }
+</script>
+
+<div class="row">
+
+    <!-- Recent Payouts Card Example -->
+    <div class="col-xl-auto col-md-auto mb-lg-auto">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-lg-auto">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="myTable">
+                                <div class="alert alert-danger text-center" id="no-rows-alert" style="display: none">No records found</div>
+
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Student Email</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Campus</th>
+                                        <th scope="col">Request Type</th>
+                                        <th scope="col">Description</th>
+                                        @*<th scope="col">Action's</th>*@
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td>@item.StdEmail</td>
+                                            <td>@item.Department</td>
+                                            <td>@item.Campus</td>
+                                            <td>@item.concessionn</td>
+                                            <td>@item.Description</td>
+                                            <!--<td>-->
+                                                @*@Html.ActionLink("View", "View", "Home", new { id = item.concessionid }, htmlAttributes: new { @class = "btn btn-success" })*@
+                                            <!--</td>-->
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

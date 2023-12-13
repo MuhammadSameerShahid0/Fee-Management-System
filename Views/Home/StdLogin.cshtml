@@ -1,0 +1,51 @@
+﻿@model FeeManagement.Models.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student ( Login )</title>
+    <link href="~/CSS/LAdorStd.css" rel="stylesheet" />
+</head>
+<body background="~/Images/login background.jpeg">
+    @using (Html.BeginForm("StdLogin", "Home", FormMethod.Post))
+    {
+
+
+        <div class="wrapper">
+            <div class="logo">
+                <img src="~/Images/FYP_logo.png" alt="">
+            </div>
+            <div class="text-center mt-4 name">
+                <center>
+                    <span style="color:#03A9F4">Student Login</span>
+                    <div>
+                        @if (ViewData["Loginflag"] != null)
+                        {
+                            <span style="color:red">
+                                @ViewData["Loginflag"]
+                            </span>
+                        }
+                    </div>
+                </center>
+            </div>
+            <form class="p-3 mt-3 ">
+                <div class="form-field d-flex align-items-center">
+                    <span class="far fa-user"></span>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Enter Email", required = "required" } })
+                </div>
+                <div class="form-field d-flex align-items-center">
+                    <span class="fas fa-key"></span>
+                    @Html.EditorFor(model => model.StdPassword, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Enter Password", required = "required" } })
+                </div>
+                <input type="submit" value="login Now" class="btn mt-3" />
+            </form>
+        </div>
+    }
+</body>
+</html>
+
