@@ -76,6 +76,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Father Name</th>
                                         <th scope="col">Department</th>
+                                        <th scope="col">Semester</th>
                                         <th scope="col">Campus</th>
                                         <th scope="col">Fee's</th>
                                     </tr>
@@ -89,6 +90,7 @@
                                             <td>@item.StdName</td>
                                             <td>@item.StdFName</td>
                                             <td>@item.Department</td>
+                                            <td>@item.Semester</td>
                                             <td>@item.Campus</td>
                                             <td>
                                                 @Html.ActionLink("Generate Fee", "Add", "Home", new { id = item.StdId }, htmlAttributes: new { @class = "btn btn-success" })

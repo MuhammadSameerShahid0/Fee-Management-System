@@ -23,6 +23,7 @@ namespace FeeManagement.Controllers
         public ActionResult FeeList()
         {
             var Feel = db.AddFees.ToList().OrderByDescending(x => x.Add_Fee_Id);
+           
             return View(Feel);
         }
 
@@ -89,7 +90,7 @@ namespace FeeManagement.Controllers
             return View();
         }
 
-        // GET: Home
+        // Admin MainPage
         public ActionResult MainPage()
         {
     
@@ -145,7 +146,7 @@ namespace FeeManagement.Controllers
             }
         }
 
-        // Registration Controller / 
+        // Registration View / 
 
         [HttpGet]
         public ActionResult Registration()
@@ -176,13 +177,6 @@ namespace FeeManagement.Controllers
         [HttpGet]
         public ActionResult StudentList()
         {
-            //dynamic modelstdlist = new ExpandoObject();
-            //modelstdlist.FeeManagementSignupDropdown = GetFeeManagementSignupDropdown();
-            //modelstdlist.FeeManagementSignup = GetFeeManagementSignup();
-            //return View(modelstdlist);
-
-            //Semester 
-            //Student 
             var data = db.Student.AsEnumerable()
                          .Join
                          (
@@ -240,6 +234,7 @@ namespace FeeManagement.Controllers
             std.FeesAmount = 0;
             std.TotalFees  = fees ?? 0;
             std.RemainFees = std.TotalFees - std.paidAmount;
+            //View
             return View(std);
         }
         [HttpPost]
@@ -255,7 +250,7 @@ namespace FeeManagement.Controllers
                 StdFName        = stdllist.StdFName,
                 Email           = stdllist.Email,
                 Semester        = stdllist.Semester,
-                TotalFees       = stdllist.TotalFees,                
+                TotalFees       = stdllist.TotalFees,
             };
 
             db.AddFees.Add(ad);
@@ -263,33 +258,9 @@ namespace FeeManagement.Controllers
 
             return RedirectToAction("Add");
 
-            //var datajoin = db.AddFees.AsEnumerable()
-            //    .Join
-            //    (
-            //        db.Student,
-            //        x => x.StdId,
-            //        c => c.StdId,
-            //        (x, c) => new { x, c }
-            //    )
-            //    .Select
-            //    (
-            //        l => new AddFees
-            //        {
-            //            StdId = l.x.StdId,
-            //            StdName = l.x.StdName,
-            //            StdFName = l.x.StdFName,
-            //            StdRollNo = l.x.StdRollNo,
-            //            Add_Fee_Id = l.x.Add_Fee_Id,
-            //            Invoice_ID = l.x.Invoice_ID,
-            //            DOT = l.x.DOT,
-            //            Payable_Fees = l.x.Payable_Fees
-
-            //        }
-            //    ).ToList();
-
-            //return View(datajoin);
         }
        
+        // Edit Student List
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -311,67 +282,7 @@ namespace FeeManagement.Controllers
 
             return RedirectToAction("StudentList");
         }
-
-        // Edit Controller for BSCS First/ 
-
-        [HttpGet]
-        public ActionResult EditBSCSFirst(int ids)
-        {
-
-            var editbscsfirst = db.BSCS_First_d.Find(ids);
-
-            return View(editbscsfirst);
-        }
-        [HttpPost]
-        public ActionResult EditBSCSFirst(BSCS_First editbscsfirst)
-        {
-
-            db.Entry(editbscsfirst).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-
-            return RedirectToAction("BscsFirst");
-        }
-
-        // Edit Controller for BSCS Second/ 
-
-        [HttpGet]
-        public ActionResult EditBSCSSecond(int idsecond)
-        {
-
-            var editbscssecond = db.BSCS_Second_d.Find(idsecond);
-
-            return View(editbscssecond);
-        }
-        [HttpPost]
-        public ActionResult EditBSCSSecond(BSCS_Second editbscssecond)
-        {
-
-            db.Entry(editbscssecond).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-
-            return RedirectToAction("BscsSecond");
-        }
-
-        // Edit Controller for BSCS Third/ 
-
-        [HttpGet]
-        public ActionResult EditBSCSThird(int idthird)
-        {
-
-            var editbscsthird = db.BSCS_Third_d.Find(idthird);
-
-            return View(editbscsthird);
-        }
-        [HttpPost]
-        public ActionResult EditBSCSThird(BSCS_Third editbscsthird)
-        {
-
-            db.Entry(editbscsthird).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-
-            return RedirectToAction("BscsThird");
-        }
-
+       
         // Delete Controller for student list /
 
         public ActionResult Delete(int delteid)
@@ -393,37 +304,7 @@ namespace FeeManagement.Controllers
 
             return RedirectToAction("AdRequest");
         }
-        // Delete Controller for BSCS First list /
-
-        public ActionResult DeleteBSCSFirst(int delteide)
-        {
-            var deletee = db.BSCS_First_d.Find(delteide);
-            db.BSCS_First_d.Remove(deletee);
-            db.SaveChanges();
-
-            return RedirectToAction("BscsFirst");
-        }
-        // Delete Controller for BSCS Second list /
-
-        public ActionResult DeleteBSCSSecond(int delteidesecond)
-        {
-            var deletees = db.BSCS_Second_d.Find(delteidesecond);
-            db.BSCS_Second_d.Remove(deletees);
-            db.SaveChanges();
-
-            return RedirectToAction("BscsSecond");
-        }
-        // Delete Controller for BSCS Third list /
-
-        public ActionResult DeleteBSCSThird(int delteidethird)
-        {
-            var deleteess = db.BSCS_Third_d.Find(delteidethird);
-            db.BSCS_Third_d.Remove(deleteess);
-            db.SaveChanges();
-
-            return RedirectToAction("BscsThird");
-        }
-
+       
         // private SemsterList
         private void SemsterList(int id)
         {
@@ -487,14 +368,15 @@ namespace FeeManagement.Controllers
         [HttpPost]
         public ActionResult StdLogin(Student objuser)
         {
+           
             var result = db.Student.Where(x => x.Email == objuser.Email && x.StdPassword == objuser.StdPassword).FirstOrDefault();
             if (result != null)
             {
                 string uer = User.Identity.Name;
                 Session["studentName"]  = result.StdName;
                 Session["studentId"]    = result.StdId;
-
-
+                Session["Semester"]     = result.Semester ;
+    
                 return RedirectToAction("StdMain", "Home");
             }
             else
@@ -504,6 +386,7 @@ namespace FeeManagement.Controllers
             }
         }
 
+        
         // View Request Admin 
         [HttpGet]
         public ActionResult AdRequest()
@@ -546,16 +429,10 @@ namespace FeeManagement.Controllers
             return View(datareuest);
         }
 
-        // Add Fees Select Button Sarein  BSCS BSEE etc...
+        // Add Fees Select Jidhr sy fees generate ho gai...
         public ActionResult AddFeeSelect() 
         {
-                //dynamic modelstdlist = new ExpandoObject();
-                //modelstdlist.FeeManagementSignupDropdown = GetFeeManagementSignupDropdown();
-                //modelstdlist.FeeManagementSignup = GetFeeManagementSignup();
-                //return View(modelstdlist);
-
-                //Semester 
-                //Student 
+                
                 var data = db.Student.AsEnumerable()
                              .Join
                              (
@@ -595,97 +472,25 @@ namespace FeeManagement.Controllers
             
         }
 
-        // BSCS View 
-        public ActionResult Bscsview()
-        {
-            return View();
-        }
-
-        // BSCS 1st 
-        public ActionResult BscsFirst()
-        {
-            List<BSCS_First> BSCSfirst = db.BSCS_First_d.ToList();
-            return View(BSCSfirst);
-        }
-
-        // Add Course Bscs First/ 
-
-        [HttpGet]
-        public ActionResult AddBscsFirst()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddBscsFirst(BSCS_First AddBscsFirsts)
-        {
-
-            db.BSCS_First_d.Add(AddBscsFirsts);
-            db.SaveChanges();
-
-            return RedirectToAction("BscsFirst");
-        }
-
-
-        // BSCS 2nd 
-        public ActionResult BscsSecond()
-        {
-            List<BSCS_Second> BSCSSecond = db.BSCS_Second_d.ToList();
-            return View(BSCSSecond);
-        }
-
-        // Add Course Bscs First/ 
-
-        [HttpGet]
-        public ActionResult AddBscsSecond()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddBscsSecond(BSCS_Second AddBscsSecond)
-        {
-
-            db.BSCS_Second_d.Add(AddBscsSecond);
-            db.SaveChanges();
-
-            return RedirectToAction("BscsSecond");
-        }
-
-        // BSCS 3rd 
-        public ActionResult BscsThird()
-        {
-            List<BSCS_Third> BSCSThird = db.BSCS_Third_d.ToList();
-            return View(BSCSThird);
-        }
-
-        // Add Course Bscs First/ 
-
-        [HttpGet]
-        public ActionResult AddBscsThird()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddBscsThird(BSCS_Third AddBscsThird)
-        {
-
-            db.BSCS_Third_d.Add(AddBscsThird);
-            db.SaveChanges();
-
-            return RedirectToAction("BscsThird");
-        }
-
-
-
-
         // -------------------- Student Work Start ----------------- //
 
         // Student Main Page
         public ActionResult StdMain()
         {
+           
             return View();
+        }
+
+        // Student Fee List
+        public ActionResult StdFeeList(Student id)
+        {
+            var dd = db.Student.Find(id);
+           
+            var sdfelt = db.AddFees.Where(x => x.StdId == dd.StdId).ToList();
+
+            
+            return View(sdfelt);
+
         }
 
         // Request Concession Student

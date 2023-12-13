@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FeeManagement.Models.AddFees>
+
+@{
+    ViewBag.Title = "StdFeeList";
+    Layout = "~/Views/Shared/StdLayout.cshtml";
+}
+
+<h2>StdFeeList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StdId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payable_Fees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdRollNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StdFName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semester)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalFees)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payable_Fees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdRollNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StdFName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalFees)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Add_Fee_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Add_Fee_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Add_Fee_Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -46,26 +46,46 @@
                 Student Info
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-graduation-cap"></i>
-                    <span>Student Details</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">View Details</h6>
-                        <a class="collapse-item" href="~/Home/StdProfile/@Session["studentId"]">
-                            <i class="fas fa-fw fa-user"></i>
-                            || Profile
-                        </a>
-                        <a class="collapse-item" href="~/Home/Stdsmstrdetails/@Session["studentId"]">
-                            <i class="fas fa-fw fa-funnel-dollar"></i>
-                            || Semester Details
-                        </a>
-                    </div>
+            @*<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-graduation-cap"></i>
+                <span>Student Details</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">View Details</h6>
+                    <a class="collapse-item" href="~/Home/StdProfile/@Session["studentId"]">
+                        <i class="fas fa-fw fa-user"></i>
+                        || Profile
+                    </a>
+                    <a class="collapse-item" href="~/Home/Stdsmstrdetails/@Session["studentId"]">
+                        <i class="fas fa-fw fa-funnel-dollar"></i>
+                        || Semester Details
+                    </a>
                 </div>
+            </div>
+        </li>*@
+
+            
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+
+            </div>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/StdProfile/@Session["studentId"]">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Profile</span>
+                </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/Stdsmstrdetails/@Session["studentId"]">
+                    <i class="fas fa-fw fa-funnel-dollar"></i>
+                    <span>Semester Details</span>
+                </a>
+            </li>
+
 
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -73,28 +93,30 @@
                 Fee's
             </div>
             <li class="nav-item ">
-                <a class="nav-link" href="~/Home/#">
+                <a class="nav-link" href="~/Home/StdFeeList">
                     <i class="fas fa-fw fa-dollar-sign"></i>
                     <span>View Fee's</span>
                 </a>
             </li>
 
+
+
             <hr class="sidebar-divider">
             <!-- Report -->
             <div class="sidebar-heading">
-                Payment Report Print
+                Invoice
             </div>
 
             <li class="nav-item ">
                 <a class="nav-link" href="~/Home/MainPage">
                     <i class="fas fa-fw fa-file-invoice"></i>
-                    <span>Print Paid Fee's Invoice</span>
+                    <span>Fee's Invoice</span>
                 </a>
             </li>
 
-            <hr class="sidebar-divider">
+            <!--<hr class="sidebar-divider">-->
             <!-- Unii Wallet -->
-            <div class="sidebar-heading">
+            <!--<div class="sidebar-heading">
                 Request
             </div>
 
@@ -103,7 +125,7 @@
                     <i class="fas fa-fw fa-wallet"></i>
                     <span>Request</span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

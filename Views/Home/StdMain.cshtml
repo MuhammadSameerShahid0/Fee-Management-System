@@ -1,8 +1,115 @@
 ﻿
 @{
-    ViewBag.Title = "StdMain";
+    ViewBag.Title = "MainPage";
     Layout = "~/Views/Shared/StdLayout.cshtml";
 }
 
-<h2>StdMain</h2>
+<head>
+
+    <title>Admin - Dashboard</title>
+</head>
+@using (Html.BeginForm("MainPage", "Home"))
+{
+    <div class="row">
+
+        <!--(Total Students) Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Semester
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Session["Semester"]</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Total Course Card  -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total Course's
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Session["Coures"]</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-book fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Balance Card  -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Pending Balance
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comment-dollar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Earning Card  -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Total Outstanding
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span style="color:red">Rs. </span>@ViewData["Fees"]</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-invoice-dollar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div id="text" class="font-weight-bolder font-italic py-2">
+        <h2>Recent Paid Fee's</h2>
+    </div>
+
+    <div class="row">
+
+        <!-- Recent Payouts Card Example -->
+        @*<div class="col-xl-auto col-md-auto mb-lg-auto">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-lg-auto">*@
+
+    </div>
+    @*</div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+}
 

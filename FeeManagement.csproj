@@ -1832,15 +1832,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddFees.cs" />
-    <Compile Include="Models\BSCS_Details.cs" />
-    <Compile Include="Models\BSCS_Eight.cs" />
-    <Compile Include="Models\BSCS_Fifth.cs" />
-    <Compile Include="Models\BSCS_First.cs" />
-    <Compile Include="Models\BSCS_Fourth.cs" />
-    <Compile Include="Models\BSCS_Second.cs" />
-    <Compile Include="Models\BSCS_Seven.cs" />
-    <Compile Include="Models\BSCS_Six.cs" />
-    <Compile Include="Models\BSCS_Third.cs" />
     <Compile Include="Models\concession_dropdwon.cs" />
     <Compile Include="Models\Fees_Management.cs" />
     <Compile Include="Models\Admin_Login.cs" />
@@ -2043,22 +2034,13 @@
     <Content Include="Views\Home\AdRequest.cshtml" />
     <Content Include="Views\Home\StdProfile.cshtml" />
     <Content Include="Views\Home\Stdsmstrdetails.cshtml" />
-    <Content Include="Views\Home\Bscsview.cshtml" />
-    <Content Include="Views\Home\BscsFirst.cshtml" />
-    <Content Include="Views\Home\EditBSCSFirst.cshtml" />
-    <Content Include="Views\Home\AddBscsFirst.cshtml" />
-    <Content Include="Views\Home\BscsSecond.cshtml" />
-    <Content Include="Views\Home\AddBscsSecond.cshtml" />
-    <Content Include="Views\Home\EditBSCSSecond.cshtml" />
-    <Content Include="Views\Home\BscsThird.cshtml" />
-    <Content Include="Views\Home\AddBscsThird.cshtml" />
-    <Content Include="Views\Home\EditBSCSThird.cshtml" />
     <Content Include="Views\Home\AddFeeSelect.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\Home\AddCourse.cshtml" />
     <Content Include="Views\Home\CourseList.cshtml" />
     <Content Include="Views\Home\EditCL.cshtml" />
     <Content Include="Views\Home\FeeList.cshtml" />
+    <Content Include="Views\Home\StdFeeList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
