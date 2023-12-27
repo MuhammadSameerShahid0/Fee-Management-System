@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FeeManagement.Models.AddFees>
+
+<div class="col mr-lg-auto">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Invoice.#
+                    </th>
+                    <th>
+                        Roll.#
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Father Name
+                    </th>
+                    <th>
+                        Semester
+                    </th>
+                    <th>
+                        Date & Time
+                    </th>
+                    <th>
+                        Payable Fee's
+                    </th>
+                    <th>
+                        Total Fee's
+                    </th>
+                    @if (ViewData["Recentpaid"].ToString() != "Yes")
+                    {
+                        <th>
+                            Action
+                        </th>
+                    }
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Add_Fee_Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdRollNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdFName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Payable_Fees)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalFees)
+                    </td>
+
+                    @if (ViewData["Recentpaid"].ToString() != "Yes")
+                    {
+                        <td>
+                            @Html.ActionLink("Download Invoice", "Add", "Home", htmlAttributes: new { @class = "btn btn-success" })
+                        </td>
+                    }
+
+                </tr>
+            }
+
+        </table>
+        @if (ViewData["Recentpaid"].ToString() != "Yes")
+        {
+            <div class="container-fluid" style="text-align : right">
+                <table class="table table-bordered">
+                    <th> <span style="color : brown">Total Paid</span></th>
+                    <th style="text-align : center"> @Model.Sum(i => i.Payable_Fees)</th>
+                </table>
+
+            </div>
+        }
+        </div>
+</div>

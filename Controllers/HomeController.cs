@@ -93,9 +93,40 @@ namespace FeeManagement.Controllers
         // Admin MainPage
         public ActionResult MainPage()
         {
-    
+
             // List Table Add Fees
-            var feelist = db.AddFees.ToList().OrderByDescending(x => x.Add_Fee_Id).Take(4);
+
+            var feelist = db.Student.AsEnumerable()
+                                    .Join
+                                    (
+                                        db.AddFees,
+                                            s => new { s.StdId},
+                                            a => new { a.StdId},
+                                            (s, a) => new { s, a}
+                                    )
+                                    .Join
+                                    (
+                                        db.Department,
+                                        s => new { s.s.SemesterId },
+                                        d => new { d.SemesterId },
+                                        (s, d) => new { s.s , s.a, d }
+                                    )
+                                    .Select
+                                     (
+                                         x => new AddFees
+                                         {
+                                             Add_Fee_Id     = x.a.Add_Fee_Id,
+                                             StdRollNo      = x.a.StdRollNo,
+                                             StdName        = x.a.StdName,
+                                             Semester       = x.a.Semester,
+                                             Payable_Fees   = x.a.Payable_Fees,
+                                             DOT            = x.a.DOT,
+                                             TotalFees      = x.a.TotalFees,
+                                             Department     = x.d.SemesterList
+                                         }
+                                     )
+                                     .OrderByDescending(x => x.Add_Fee_Id).Take(4)
+                                     .ToList();
 
             int outstanding;
             int? paid;
@@ -373,10 +404,7 @@ namespace FeeManagement.Controllers
             if (result != null)
             {
                 string uer = User.Identity.Name;
-                Session["studentName"]  = result.StdName;
-                Session["studentId"]    = result.StdId;
-                Session["Semester"]     = result.Semester ;
-    
+                FeeCollection(result);
                 return RedirectToAction("StdMain", "Home");
             }
             else
@@ -477,22 +505,37 @@ namespace FeeManagement.Controllers
         // Student Main Page
         public ActionResult StdMain()
         {
-           
+            //Total Courses
+       
             return View();
         }
 
         // Student Fee List
-        public ActionResult StdFeeList(Student id)
+        public ActionResult StdFeeList()
         {
-            var dd = db.Student.Find(id);
-           
-            var sdfelt = db.AddFees.Where(x => x.StdId == dd.StdId).ToList();
-
-            
-            return View(sdfelt);
-
+            return View();
         }
 
+        public ActionResult PartialFeelist( bool recentpaid , int id)
+        {
+            string recentFlag = "No";
+
+            List<AddFees> fees = new List<AddFees>();
+            if (recentpaid)
+            {
+                recentFlag = "Yes";
+                fees = db.AddFees.Where(x => x.StdId == id).OrderByDescending(x => x.StdId).Take(4).ToList();
+            }
+            else
+            {
+                fees = db.AddFees.Where(x => x.StdId == id).ToList();
+            }
+
+            ViewData["Recentpaid"] = recentFlag;
+
+            return PartialView(fees);
+
+        }
         // Request Concession Student
         public ActionResult concession()
         {
@@ -538,6 +581,28 @@ namespace FeeManagement.Controllers
             return View(stdsmstdtl);
         }
 
+        private void FeeCollection(Student std)
+        {
+            int outstanding;
+            int? paid;
+
+            //Student Name
+            Session["studentName"]  = std.StdName;
+            //Student Id
+            Session["studentId"]    = std.StdId;
+            //Semester
+            Session["Semester"]     = std.Semester;
+            //Course
+            Session["Course"]       = db.Semester_Wise_Courses.Where(x => x.DepartmentId == std.SemesterId && x.Semester == std.Semester).Count();
+
+            //Total Outstanding
+            outstanding = db.Semester_Wise_Courses.Where(x => x.DepartmentId == std.SemesterId && x.Semester == std.Semester).Sum(x => x.fees);
+            Session["TotalFees"] = outstanding;
+
+            //Paid
+            paid = db.AddFees.Where(x => x.StdId == std.StdId && x.Semester == std.Semester).Sum(x => (int?)x.Payable_Fees);
+            Session["pending"] = outstanding - paid ?? 0;
+        }
     }
 } 
     

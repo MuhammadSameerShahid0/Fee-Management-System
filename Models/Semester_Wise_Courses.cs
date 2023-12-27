@@ -16,5 +16,10 @@ namespace FeeManagement.Models
         public string course_name   { get; set; }
         public int credit_hours { get; set; }
         public int fees         { get; set; }
+
+        [NotMapped]
+        public int StdId { get; set; }
+        [NotMapped]
+        public string Department { get; set; }
     }
 }

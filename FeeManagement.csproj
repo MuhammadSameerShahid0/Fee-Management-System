@@ -2041,6 +2041,7 @@
     <Content Include="Views\Home\EditCL.cshtml" />
     <Content Include="Views\Home\FeeList.cshtml" />
     <Content Include="Views\Home\StdFeeList.cshtml" />
+    <Content Include="Views\Home\PartialFeelist.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

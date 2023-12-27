@@ -34,7 +34,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="~/Home/StdMain">
+                <a class="nav-link" href="~/Home/StdMain/@Session["studentId"]">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -45,29 +45,6 @@
             <div class="sidebar-heading">
                 Student Info
             </div>
-            <!-- Nav Item - Pages Collapse Menu -->
-            @*<li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-graduation-cap"></i>
-                <span>Student Details</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">View Details</h6>
-                    <a class="collapse-item" href="~/Home/StdProfile/@Session["studentId"]">
-                        <i class="fas fa-fw fa-user"></i>
-                        || Profile
-                    </a>
-                    <a class="collapse-item" href="~/Home/Stdsmstrdetails/@Session["studentId"]">
-                        <i class="fas fa-fw fa-funnel-dollar"></i>
-                        || Semester Details
-                    </a>
-                </div>
-            </div>
-        </li>*@
-
-            
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -85,6 +62,12 @@
                     <span>Semester Details</span>
                 </a>
             </li>
+            @*<li class="nav-item ">
+                <a class="nav-link" href="~/Home/PartialCourse/@Session["studentId"]">
+                    <i class="fas fa-fw fa-funnel-dollar"></i>
+                    <span>Course Details</span>
+                </a>
+            </li>*@
 
 
             <hr class="sidebar-divider">
@@ -93,7 +76,7 @@
                 Fee's
             </div>
             <li class="nav-item ">
-                <a class="nav-link" href="~/Home/StdFeeList">
+                <a class="nav-link" href="~/Home/StdFeeList/@Session["studentId"]">
                     <i class="fas fa-fw fa-dollar-sign"></i>
                     <span>View Fee's</span>
                 </a>
@@ -101,9 +84,9 @@
 
 
 
-            <hr class="sidebar-divider">
+            <!--<hr class="sidebar-divider">-->
             <!-- Report -->
-            <div class="sidebar-heading">
+            <!--<div class="sidebar-heading">
                 Invoice
             </div>
 
@@ -111,19 +94,6 @@
                 <a class="nav-link" href="~/Home/MainPage">
                     <i class="fas fa-fw fa-file-invoice"></i>
                     <span>Fee's Invoice</span>
-                </a>
-            </li>
-
-            <!--<hr class="sidebar-divider">-->
-            <!-- Unii Wallet -->
-            <!--<div class="sidebar-heading">
-                Request
-            </div>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="~/Home/concession">
-                    <i class="fas fa-fw fa-wallet"></i>
-                    <span>Request</span>
                 </a>
             </li>-->
 
@@ -145,7 +115,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <marquee behavior="scroll" direction="left"><i class="fas fa-wallet fa-0x text-gray-50"></i> <span style="color:blue">Fee Management System </span>( Unii Wallet) Student <span style="color:red">Profile</span> Layout</marquee>
+                    <marquee behavior="scroll" direction="left"><i class="fas fa-wallet fa-0x text-gray-50"></i> <span style="color:blue">Fee Management System </span>( Unii Wallet) Student <span style="color:red">Detail's</span> Information</marquee>
 
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<FeeManagement.Models.AddFees>
 @{
     ViewBag.Title = "MainPage";
     Layout = "~/Views/Shared/StdLayout.cshtml";
@@ -6,7 +6,9 @@
 
 <head>
 
-    <title>Admin - Dashboard</title>
+    <title>Student - Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 @using (Html.BeginForm("MainPage", "Home"))
 {
@@ -41,11 +43,15 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total Course's
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Session["Coures"]</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"  data-toggle="modal" data-target="#myModal">@Session["Course"] <span style="color: red">--> Details</span></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-book fa-2x text-gray-300"></i>
+                            @*<div class="text-xs font-weight-bold text-danger text-uppercase mb-1" data-toggle="modal" data-target="#myModal">
+                                Detail's
+                            </div>*@
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -60,7 +66,7 @@
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Pending Balance
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span style="color:red">Rs. </span>@Session["pending"]</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comment-dollar fa-2x text-gray-300"></i>
@@ -79,7 +85,7 @@
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Total Outstanding
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span style="color:red">Rs. </span>@ViewData["Fees"]</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><span style="color:red">Rs. </span>@Session["TotalFees"]</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-file-invoice-dollar fa-2x text-gray-300"></i>
@@ -90,26 +96,40 @@
         </div>
     </div>
 
-    <!-- Content Row -->
-    <div id="text" class="font-weight-bolder font-italic py-2">
-        <h2>Recent Paid Fee's</h2>
-    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
 
-    <div class="row">
-
-        <!-- Recent Payouts Card Example -->
-        @*<div class="col-xl-auto col-md-auto mb-lg-auto">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-lg-auto">*@
-
-    </div>
-    @*</div>
-                    </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-        </div>*@
 
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div id="text" class="font-weight-bolder font-italic py-2">
+        <u><h2>Recent Paid Fee's <span style="color : red">(@Session["studentName"])</span></h2></u>
+    </div>
+    {
+        Html.RenderAction("PartialFeelist", "Home", new { recentpaid = true, id = @Session["studentId"] });
+    }
+    <div class="container-fluid" style="text-align : right">
+        <table class="table table-bordered">
+            <th> <span style="color : brown">View Full List</span></th>
+            <th style="text-align : center"> @Html.ActionLink("Fee List", "StdFeeList", "Home", htmlAttributes: new { @class = "btn btn-success" })</th>
+        </table>
+
+    </div>
 }
 

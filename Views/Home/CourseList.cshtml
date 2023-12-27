@@ -44,7 +44,7 @@
             if (td) {
                 txtValue = td.textContent || td.innerText;
 
-                if (txtValue.indexOf(filter) > -1) //touppercase case sensitive ni krna to use kia.
+                if (txtValue.toUpperCase().indexOf(filter) > -1) //touppercase case sensitive ni krna to use kia.
                 {
                     matchedRow = true;
                     tr[i].style.display = "";
