@@ -22,6 +22,7 @@ namespace FeeManagement.Models
         public int SemesterId       { get; set; }
         public int Semester         { get; set; }
         public int CampusId         { get; set; }
+       
 
 
         [NotMapped]
@@ -37,5 +38,9 @@ namespace FeeManagement.Models
         public int TotalFees { get; set; }
         [NotMapped]
         public int RemainFees { get; set; }
+        [NotMapped]
+        public int previousRemainFees { get; set; }
+        [NotMapped]
+        public int totalandremain { get; set; }
     }
 }

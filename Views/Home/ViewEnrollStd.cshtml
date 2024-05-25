@@ -1,0 +1,77 @@
+﻿@model IEnumerable<FeeManagement.Models.EnrollStd>
+
+@{
+    ViewBag.Title = "ViewEnrollStd";
+    Layout = "~/Views/Shared/StdLayout.cshtml";
+}
+<head>
+
+    <title>@Session["studentName"] - Enroll Course</title>
+    <link href="~/CSS/Search_Box.css" rel="stylesheet" />
+</head>
+
+<h3 class="text-center" style="font-weight:bolder">@Session["studentName"]  <span style="color:brown">( Enroll - Course Detail's )</span></h3>
+
+<div class="col mr-lg-auto">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Roll #
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Enroll Semester
+                    </th>
+                    <th>
+                        Enroll Course Name
+                    </th>
+                    <th>
+                        Enroll Credit Hour's
+                    </th>
+                    <th>
+                        Enroll Fee's
+                    </th>
+                    <th>
+                        Current Semester
+                    </th>
+                    <th>
+                       Enroll Date & Time
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdRollNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StdName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.course_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.credit_hours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fees)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Current_Semester)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dot)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

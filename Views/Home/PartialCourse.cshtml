@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FeeManagement.Models.Semester_Wise_Courses>
+
+<div class="col mr-lg-auto">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Semester)
+                    </th>
+                    <th>
+                        Course Name
+                    </th>
+                    <th>
+                        Credit Hour's
+                    </th>
+                    <th>
+                        Fee's
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.course_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.credit_hours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fees)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div class="container-fluid" style="text-align : right">
+            <table class="table table-bordered">
+                <th> <span style="color : brown">Total Fee's</span></th>
+                <th style="text-align : center"> @Model.Sum(i => i.fees)</th>
+            </table>
+
+        </div>
+    </div>
+</div>

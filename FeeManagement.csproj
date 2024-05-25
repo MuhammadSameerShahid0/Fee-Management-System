@@ -120,6 +120,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\banner-bg.png" />
     <Content Include="Images\fee.png" />
+    <Content Include="Images\file-not-found-illustration-with-confused-people-holding-big-magnifier-search-no-result-data-not-found-concept-can-be-used-for-website-landing-page-animation-etc-vector-removebg-preview.png" />
     <Content Include="Images\image_processing20220515-31554-1t0kv64.gif" />
     <Content Include="Images\login background.jpeg" />
     <Content Include="Images\FYP_logo.png" />
@@ -127,6 +128,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\html2pdf.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -1833,6 +1835,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddFees.cs" />
     <Compile Include="Models\concession_dropdwon.cs" />
+    <Compile Include="Models\EnrollFee.cs" />
+    <Compile Include="Models\EnrollStd.cs" />
     <Compile Include="Models\Fees_Management.cs" />
     <Compile Include="Models\Admin_Login.cs" />
     <Compile Include="Models\Campus.cs" />
@@ -2042,6 +2046,18 @@
     <Content Include="Views\Home\FeeList.cshtml" />
     <Content Include="Views\Home\StdFeeList.cshtml" />
     <Content Include="Views\Home\PartialFeelist.cshtml" />
+    <Content Include="Views\Home\PartialCourse.cshtml" />
+    <Content Include="Views\Home\CourseDetail.cshtml" />
+    <Content Include="Views\Home\InvoiceFe.cshtml" />
+    <Content Include="Views\Home\Enrollment.cshtml" />
+    <Content Include="Views\Home\EnrollAdd.cshtml" />
+    <Content Include="Views\Home\ViewEnrollStd.cshtml" />
+    <Content Include="Views\Home\EnrollFee.cshtml" />
+    <Content Include="Views\Home\EnrollFeeGen.cshtml" />
+    <Content Include="Views\Home\EnrollFeeList.cshtml" />
+    <Content Include="Views\Home\Enrolllist.cshtml" />
+    <Content Include="Views\Home\EnrollFeeListstd.cshtml" />
+    <Content Include="Views\Home\EnrollInvoiceFe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

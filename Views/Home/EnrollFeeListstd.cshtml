@@ -1,0 +1,108 @@
+﻿@model IEnumerable<FeeManagement.Models.EnrollFee>
+
+@{
+    ViewBag.Title = "EnrollFeeListstd";
+    Layout = "~/Views/Shared/StdLayout.cshtml";
+}
+
+<head>
+    <title> @Session["studentName"] - Enroll Fee List</title>
+</head>
+<h3 class="text-center" style="font-weight:bolder">@Session["studentName"] <span style="color:brown">( Enrollment Fee - List )</span></h3>
+<center>
+
+     <button class="btn btn-danger" onclick="tableToExcel()">Download List</button>
+    </div>
+</center>
+
+<script src="~/Scripts/table2excel.js"></script>
+
+<script>
+    function tableToExcel()
+    {
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("table#myTable"));
+    }
+</script>
+
+<div class="table-responsive"><br />
+    <table class="table table-bordered" id="myTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                   Invoice #
+                </th>
+                <th>
+                    Roll #
+                </th>
+                <th>
+                  Student Name
+                </th>
+                <th>
+                    Enroll Semester
+                </th>
+                <th>
+                    Enroll Course Name
+                </th>
+                <th>
+                   Credit Hour's
+                </th>
+                <th>
+                    Enroll Fee's
+                </th>
+                <th>
+                    Current Semester
+                </th>
+                <th>
+                    Date & Time
+                </th>
+                <th>
+                    Paid Amount
+                </th>
+                <th>
+                    Receipt
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StdRollNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StdName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.course_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.credit_hours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Current_Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dot)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.payable_fees)
+                </td>
+                <td>
+                    @Html.ActionLink("Invoice", "EnrollInvoiceFe", "Home", new { id = item.id }, htmlAttributes: new { @class = "btn btn-success" })
+                </td>
+            </tr>
+
+        }
+
+    </table>
+</div>

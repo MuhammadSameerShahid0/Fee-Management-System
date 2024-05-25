@@ -1,0 +1,128 @@
+﻿@model FeeManagement.Models.EnrollFee
+
+@{
+    ViewBag.Title = "EnrollInvoiceFe";
+    Layout = "~/Views/Shared/StdLayout.cshtml";
+}
+
+<head>
+    <title>@Session["StudentName"] - Enroll Invoice</title>
+</head>
+
+<script src="~/Scripts/html2pdf.js"></script>
+<script>
+    function generatepdf()
+    {
+        const element = document.getElementById("Invoice");
+        html2pdf().from(element).save();
+    }
+</script>
+<div class="card">
+    <div class="card-body" id="Invoice">
+        <div class="container mb-5 mt-3">
+            <div class="row d-flex align-items-baseline">
+                <div class="col-xl-9">
+                    <p style="color: #7e8d9f;font-size: 20px;">Enroll Invoice >> <strong>ID : # @Html.DisplayFor(Model => Model.id)</strong></p>
+                </div>
+                <div class="col-xl-3 float-end">
+                    <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark" onclick="generatepdf()">
+                        <i class="far fa-file-pdf text-danger"></i> Export
+                    </a>
+                </div>
+                <hr>
+            </div>
+
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <i class="fab fa-4x ms-0" style="color:#5d9fc5 ;">Unii Wallet</i>
+                        <p class="pt-0">hup.edu.pk</p>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-8">
+                        <ul class="list-unstyled">
+                            <li class="text-muted">To: <span style="color:#5d9fc5 ;">Unii Wallet</span></li>
+                            <li class="text-muted">Gulberg III , Lhr</li>
+                            <li class="text-muted">Punjab , Pakistan</li>
+                            <li class="text-muted"><i class="fas fa-phone"></i>+92316-7394939</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <p class="text-muted">Invoice</p>
+                        <ul class="list-unstyled">
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Enroll Invoice ID : </span>@Html.DisplayFor(Model => Model.id)
+                            </li>
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="fw-bold">Date : </span>@Html.DisplayFor(Model => Model.Dot)
+                            </li>
+                            <li class="text-muted">
+                                <i class="fas fa-circle" style="color:#84B0CA ;"></i> <span class="me-1 fw-bold">Status : </span><span class="badge bg-warning text-black fw-bold">
+                                    Paid
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row my-2 mx-1 justify-content-center">
+                    <table class="table table-striped table-borderless table-responsive-xl">
+                        <thead style="background-color:#84B0CA ;" class="text-white">
+                            <tr>
+                                
+                                <th scope="col">Roll #</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Enroll Semester</th>
+                                <th scope="col">Enroll Course</th>
+                                <th scope="col">Current Semester</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                             
+                                <td>@Html.DisplayFor(Model => Model.StdRollNo)</td>
+                                <td>@Html.DisplayFor(Model => Model.StdName)</td>
+                                <td>@Html.DisplayFor(Model => Model.Semester)</td>
+                                <td>@Html.DisplayFor(Model => Model.course_name)</td>
+                                <td>@Html.DisplayFor(Model => Model.Current_Semester)</td>
+                                <td>@Html.DisplayFor(Model => Model.payable_fees) Pkr</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8">
+                        <p class="ms-3">Additional notes and Payment Information</p>
+
+                    </div>
+                    <div class="col-xl-3">
+                        <ul class="list-unstyled">
+                            <li class="text-muted ms-3"><span class="text-black me-4">Payable Fee's : </span>@Html.DisplayFor(Model => Model.payable_fees) Pkr</li>
+                            <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Total Fee's : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>@Html.DisplayFor(Model => Model.fees) Pkr</li>
+                            <li class="text-muted ms-3 mt-2">
+                                <span class="text-black me-4">Remaining Fee's :</span> @{ var result = Model.payable_fees - Model.fees; }
+                                @result Pkr
+                            </li>
+                        </ul>
+                        <p class="text-black float-start">
+                            <span class="text-black me-3"> Total Amount : </span><span style="font-size: 21px;"> <span style="color : brown"> @Html.DisplayFor(Model => Model.payable_fees) Pkr</span></span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xl-10">
+                        <p>Thank you for your Paying Enrollment Fee's</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

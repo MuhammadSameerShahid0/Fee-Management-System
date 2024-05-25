@@ -1,0 +1,103 @@
+﻿@model IEnumerable<FeeManagement.Models.Semester_Wise_Courses>
+
+@{
+    ViewBag.Title = "Enrollment";
+    Layout = "~/Views/Shared/StdLayout.cshtml";
+}
+<head>
+
+    <title>@Session["studentName"] - Enrollment</title>
+    <link href="~/CSS/Search_Box.css" rel="stylesheet" />
+</head>
+
+<h3 class="text-center" style="font-weight:bolder">@Session["studentName"]  <span style="color:brown">( Course - Enroll )</span></h3>
+<center>
+    <div class="input-icons">
+        <i class="fa fa-search icon fa-lg me-8 fa-fw">
+        </i>
+        <input class="input-field" type="text" id="myInput" onkeyup="searchbox()" placeholder="Find Course by Name . . .">
+    </div>
+</center>
+<script>
+    function searchbox() {
+        var input, filter, table, tr, td, i, txtValue, norows;
+
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        norows = document.getElementById('no-rows-alert');
+
+        var matchedRow = false;
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1, 0]; // counting 2,1,8.. represnt kr rha kis cheez sy serch box access krna
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) //touppercase case sensitive ni krna to use kia.
+                {
+                    matchedRow = true;
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        // no record found
+        norows.style.display = matchedRow ? 'none' : 'inherit';
+        if (!matchedRow) {
+            setTimeout(function () {
+                norows.style.display = 'none'
+            }, 3000)
+        }
+    }
+</script>
+<div class="col mr-lg-auto">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="myTable">
+            <div class="alert alert-danger text-center" id="no-rows-alert" style="display: none">No record found Against This Course Name</div>
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Course Name
+                    </th>
+                    <th>
+                        Semester
+                    </th>
+                    <th>
+                        Credit Hour's
+                    </th>
+                    <th>
+                        Fee's
+                    </th>
+                    <th>
+                        Action's
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.course_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.credit_hours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fees)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Enroll", "EnrollAdd", "Home", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-success" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

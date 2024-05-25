@@ -1,0 +1,131 @@
+﻿@model FeeManagement.Models.EnrollStd
+
+@{
+    ViewBag.Title = "EnrollFeeGen";
+    Layout = "~/Views/Shared/AdLayout.cshtml";
+}
+<head>
+
+    <title>Admin - Enroll Add Student Fees</title>
+
+</head>
+<h3 class="text-center" style="font-weight:bolder">Admin Operation <span style="color:brown">( Enrol Add - Student Fees )</span></h3>
+<h5 class="text-center" style="font-weight:bolder"><span style="color:brown">Enroll Fee's ( Instalment Not Accepted (Pay Full Fee's) )</span></h5>   
+
+   @using (Html.BeginForm("EnrollFeeGen", "Home" , FormMethod.Post))
+    {
+@Html.HiddenFor(model => model.StdId)
+@Html.HiddenFor(model => model.Semester)
+
+<div class="container m-3 pb-3">
+    <div class="row shadow pt-4 bg-white p-4 rounded">
+        <div class="col-sm pt-2">
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-id-badge fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b> Roll # </b> @Html.EditorFor(model => model.StdRollNo, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Student Roll No.", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.StdRollNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user-graduate fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b> Student Name</b> @Html.EditorFor(model => model.StdName, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Student Name", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.StdName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b>Student Email</b> @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-sort-amount-up-alt fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b>Current Semester</b> @Html.EditorFor(model => model.Current_Semester, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Current_Semester, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <b><i><h4 style="font-size:25px">Rs</h4></i></b>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b>Currently Receiving Amount</b>@Html.EditorFor(model => model.payable_fees, new { htmlAttributes = new { @class = "form-control , border border-top-0" } })
+                        @Html.ValidationMessageFor(model => model.payable_fees, "", new { @class = "text-danger" })
+                         Remove 0 Enter Amount<br /> ( Instalment Not Accepted )
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm pt-2">
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b> Enroll Semester</b> @Html.EditorFor(model => model.Semester, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Semester, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-book-medical fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b> Course Name </b> @Html.EditorFor(model => model.course_name, new { htmlAttributes = new { @class = "form-control , border border-top-0", placeholder = "Student Father Name", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.course_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-cash-register fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b>Credit Hours</b>  @Html.EditorFor(model => model.credit_hours, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.credit_hours, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <b><i><h4 style="font-size:25px">Rs</h4></i></b>
+                    <div class="form-outline flex-fill mb-0 col-md-9">
+                        <b>Enroll Fee's</b> @Html.EditorFor(model => model.fees, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.fees, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add Enroll Fee's" class="btn btn-primary rounded-pill" />
+            <a href="~/Home/EnrollFee">
+                <input type="button" value="Back" class="btn btn-danger rounded-pill" />
+            </a>
+        </div>
+
+    </div>
+</div>
+
+    }

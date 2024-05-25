@@ -1,0 +1,14 @@
+﻿@model IEnumerable<FeeManagement.Models.Semester_Wise_Courses>
+
+@{
+    ViewBag.Title = "CourseDetail";
+    Layout = "~/Views/Shared/StdLayout.cshtml";
+}
+
+<head>
+
+    <title>@Session["studentName"] - Course Detail's</title>
+
+</head>
+<h3 class="text-center" style="font-weight:bolder">@Session["studentName"]  <span style="color:brown">( Course - Detail's )</span></h3>
+@{ Html.RenderAction("PartialCourse", "Home", new { id = @Session["studentId"] }); }

@@ -60,16 +60,16 @@
                             || Add Student
                         </a>
                         @*<a class="collapse-item" href="~/Home/AddFeeSelect">
-                            <i class="fas fa-fw fa-funnel-dollar"></i>
-                            || Add Fee
-                        </a>*@
-                        @*<a class="collapse-item" href="~/Students/Create">
-                            <i class="fas fa-fw fa-user-graduate "></i>
-                            || Enrollment
-                        </a>*@
+            <i class="fas fa-fw fa-funnel-dollar"></i>
+            || Add Fee
+        </a>*@   
                         <a class="collapse-item" href="~/Home/StudentList">
                             <i class="fas fa-fw fa-file-invoice"></i>
                             || Student List
+                        </a>
+                        <a class="collapse-item" href="~/Home/Enrolllist">
+                            <i class="fas fa-fw fa-user-graduate "></i>
+                            || Enrollment List
                         </a>
                     </div>
                 </div>
@@ -86,9 +86,9 @@
                         <a class="collapse-item" href="~/Home/AddCourse">Add Course</a>
                         <a class="collapse-item" href="~/Home/CourseList">Course List</a>
                         @*<a class="collapse-item" href="~/Home/Bscsview">BSCS</a>
-                        <a class="collapse-item" href="utilities-border.html">BSSE</a>
-                        <a class="collapse-item" href="utilities-animation.html">BSMATHS</a>
-                        <a class="collapse-item" href="utilities-other.html">BSIT</a>*@
+                    <a class="collapse-item" href="utilities-border.html">BSSE</a>
+                    <a class="collapse-item" href="utilities-animation.html">BSMATHS</a>
+                    <a class="collapse-item" href="utilities-other.html">BSIT</a>*@
                     </div>
                 </div>
             </li>
@@ -104,9 +104,15 @@
                     <span>Add Fee</span>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/EnrollFee">
+                    <i class="fas fa-fw fa-funnel-dollar"></i>
+                    <span>Add Enroll Fee</span>
+                </a>
+            </li>
 
             <hr class="sidebar-divider">
-            
+
             <div class="sidebar-heading">
                 Fee's List
             </div>
@@ -117,20 +123,25 @@
                     <span>Student Fee List</span>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/EnrollFeeList">
+                    <i class="fas fa-fw fa-file-invoice"></i>
+                    <span>Enroll Student Fee List</span>
+                </a>
+            </li>
 
             @*<hr class="sidebar-divider">*@
             <!-- Unii Wallet -->
             <!--<div class="sidebar-heading">
-                Request
-            </div>
+        Request
+    </div>
 
-            <li class="nav-item ">
-                <a class="nav-link" href="~/Home/AdRequest">
-                    <i class="fas fa-fw fa-wallet"></i>
-                    <span>View Request</span>
-                </a>
-            </li>-->
-
+    <li class="nav-item ">
+        <a class="nav-link" href="~/Home/AdRequest">
+            <i class="fas fa-fw fa-wallet"></i>
+            <span>View Request</span>
+        </a>
+    </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->

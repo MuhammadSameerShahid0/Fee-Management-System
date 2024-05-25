@@ -20,6 +20,15 @@ namespace FeeManagement.Models
         [NotMapped]
         public int StdId { get; set; }
         [NotMapped]
-        public string Department { get; set; }
+        public int StdRollNo        { get; set; }
+        [NotMapped]
+        public string StdName       { get; set; }
+        [NotMapped]
+        public string Email         { get; set; }
+        [NotMapped] 
+        public string Department    { get; set; }
+        [NotMapped]
+        public int Current_Semester { get; set; }
+       
     }
 }

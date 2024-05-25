@@ -62,12 +62,24 @@
                     <span>Semester Details</span>
                 </a>
             </li>
-            @*<li class="nav-item ">
-                <a class="nav-link" href="~/Home/PartialCourse/@Session["studentId"]">
-                    <i class="fas fa-fw fa-funnel-dollar"></i>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/CourseDetail/@Session["studentId"]">
+                    <i class="fas fa-fw fa-book-reader"></i>
                     <span>Course Details</span>
                 </a>
-            </li>*@
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/Enrollment/@Session["studentId"]">
+                    <i class="fas fa-fw fa-book-reader"></i>
+                    <span>Enrollment</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/ViewEnrollStd/@Session["studentId"]">
+                    <i class="fas fa-fw fa-book-open"></i>
+                    <span>View Enroll Subject</span>
+                </a>
+            </li>
 
 
             <hr class="sidebar-divider">
@@ -81,22 +93,27 @@
                     <span>View Fee's</span>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="~/Home/EnrollFeeListstd/@Session["studentId"]">
+                    <i class="fas fa-fw fa-dollar-sign"></i>
+                    <span>View Enroll Fee's</span>
+                </a>
+            </li>
 
-
+            
 
             <!--<hr class="sidebar-divider">-->
             <!-- Report -->
             <!--<div class="sidebar-heading">
-                Invoice
-            </div>
+        Invoice
+    </div>
 
-            <li class="nav-item ">
-                <a class="nav-link" href="~/Home/MainPage">
-                    <i class="fas fa-fw fa-file-invoice"></i>
-                    <span>Fee's Invoice</span>
-                </a>
-            </li>-->
-
+    <li class="nav-item ">
+        <a class="nav-link" href="~/Home/MainPage">
+            <i class="fas fa-fw fa-file-invoice"></i>
+            <span>Fee's Invoice</span>
+        </a>
+    </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->

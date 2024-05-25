@@ -32,10 +32,13 @@
                     <th>
                         Total Fee's
                     </th>
+                    <th>
+                        Remaining Fee's
+                    </th>
                     @if (ViewData["Recentpaid"].ToString() != "Yes")
                     {
                         <th>
-                            Action
+                            Receipt
                         </th>
                     }
                 </tr>
@@ -65,16 +68,23 @@
                         @Html.DisplayFor(modelItem => item.DOT)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Payable_Fees)
+                        <span style="color:brown">@Html.DisplayFor(modelItem => item.Payable_Fees) </span>
+                        
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TotalFees)
                     </td>
-
+                    <td>
+                        <b>
+                            @{ var result = item.RemainFees - item.Payable_Fees; }
+                                                @result
+                                            </b>
+                        
+                    </td>
                     @if (ViewData["Recentpaid"].ToString() != "Yes")
                     {
                         <td>
-                            @Html.ActionLink("Download Invoice", "Add", "Home", htmlAttributes: new { @class = "btn btn-success" })
+                            @Html.ActionLink("Invoice", "InvoiceFe", "Home", new { id = item.Add_Fee_Id }, htmlAttributes: new { @class = "btn btn-success" })
                         </td>
                     }
 

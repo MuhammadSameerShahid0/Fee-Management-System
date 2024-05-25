@@ -24,5 +24,7 @@ namespace FeeManagement
         public DbSet<concession_dropdwon> concession_dropdwon     { get; set; }
         public DbSet<AddFees> AddFees                             { get; set; }        
         public DbSet<Semester_Wise_Courses> Semester_Wise_Courses { get; set; }        
+        public DbSet<EnrollStd> Enroll_Student                    { get; set; }        
+        public DbSet<EnrollFee> Enroll_Student_Fee                { get; set; }        
     }
 }

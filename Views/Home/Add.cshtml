@@ -58,11 +58,26 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-sort-amount-up-alt fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0 col-md-9">
-                                <b>Current Receive Amount</b> @Html.EditorFor(model => model.FeesAmount, new { htmlAttributes = new { @class = "form-control , border border-top-0" } })
+                                <b>Current Receive Amount</b> @Html.EditorFor(model => model.FeesAmount, new { htmlAttributes = new { @class = "form-control , border border-top-0", required = "required" } })
                                 @Html.ValidationMessageFor(model => model.StdFName, "", new { @class = "text-danger" })
+                                (Remove 0 Enter Amount )
                             </div>
                         </div>
                     </div>
+                    @*@if (Model.Semester > 1)
+                    {
+                    <div class="form-group">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-sort-amount-up-alt fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0 col-md-9">
+                                <b>Total & Previous Remain</b><br /> @{ var x = Model.TotalFees;
+                                    var y = Model.previousRemainFees;
+                                    var z = x + y;
+                                    }Total Fee @x , Previous Remain @y = Total @z
+                                @Html.ValidationMessageFor(model => model.StdFName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>}*@
 
                 </div>
 
@@ -98,17 +113,41 @@
                             </div>
                         </div>
                     </div>
-
+                    @if (Model.paidAmount > Model.TotalFees)
+                    {
                     <div class="form-group">
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-sort-amount-down-alt fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0 col-md-9">
-                                <b>Remaining Fee's</b> @Html.EditorFor(model => model.RemainFees, new { htmlAttributes = new { @class = "form-control , border border-top-0" , @readonly = "readonly" } })
+                                <b>Extra Paid Fee's (Ignore Minus )</b> @Html.EditorFor(model => model.RemainFees, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
                                 @Html.ValidationMessageFor(model => model.RemainFees, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
-
+                    }
+                    else
+                    {
+                    <div class="form-group">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-sort-amount-down-alt fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0 col-md-9">
+                                <b>Remaining Fee's</b> @Html.EditorFor(model => model.RemainFees, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.RemainFees, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>}
+                    @*@if (Model.Semester > 1)
+                    {
+                    <div class="form-group">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-sort-amount-down-alt fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0 col-md-9">
+                                <b>Previous Remaining Fee's</b> @Html.EditorFor(model => model.previousRemainFees, new { htmlAttributes = new { @class = "form-control , border border-top-0", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.previousRemainFees, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    }*@
 
                 </div>
 

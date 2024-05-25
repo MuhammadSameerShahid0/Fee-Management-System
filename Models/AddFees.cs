@@ -20,8 +20,11 @@ namespace FeeManagement.Models
         public string StdFName { get; set; }
         public int Semester { get; set; }
         public int TotalFees { get; set; }
+        public int RemainFees { get; set; }
 
         [NotMapped]
         public string Department { get; set; }
+        [NotMapped]
+        public int previousRemainFees { get; set; }
     }
 }
